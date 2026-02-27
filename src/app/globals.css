@@ -1,0 +1,54 @@
+/* src/app/globals.css */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sepia: 0%;
+  --brightness: 100%;
+  --contrast: 100%;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-light dark:bg-bg-dark text-stone-800 dark:text-stone-200 font-sans;
+    transition: background-color 0.4s, color 0.4s;
+  }
+}
+
+@layer utilities {
+  .page-filter {
+    filter: sepia(var(--sepia)) brightness(var(--brightness)) contrast(var(--contrast));
+    transition: filter 0.5s;
+  }
+
+  .spine-shadow-left {
+    box-shadow: -4px 4px 0 #e8e2d5, -8px 8px 30px rgba(0,0,0,0.1);
+  }
+  .dark .spine-shadow-left {
+    box-shadow: -4px 4px 0 #0f0d0b, -8px 8px 30px rgba(0,0,0,0.3);
+  }
+
+  .spine-shadow-right {
+    box-shadow: 4px 4px 0 #e8e2d5, 8px 8px 30px rgba(0,0,0,0.1);
+  }
+  .dark .spine-shadow-right {
+    box-shadow: 4px 4px 0 #0f0d0b, 8px 8px 30px rgba(0,0,0,0.3);
+  }
+}
+
+/* Slider thumb styling */
+input[type='range'] {
+  @apply appearance-none bg-stone-200 dark:bg-stone-700 rounded-full cursor-pointer;
+  height: 4px;
+}
+input[type='range']::-webkit-slider-thumb {
+  @apply appearance-none w-4 h-4 rounded-full bg-accent cursor-pointer;
+  box-shadow: 0 2px 8px rgba(196,113,58,0.4);
+  transition: transform 0.2s;
+}
+input[type='range']::-webkit-slider-thumb:hover {
+  transform: scale(1.3);
+}
